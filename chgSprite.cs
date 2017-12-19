@@ -22,7 +22,7 @@ public class chgSprite : MonoBehaviour {
         return trnKind;
     }
 
-    public void changeSprite() // スクワットをタップした時
+    public void changeSprite() // スクワットをタップした時🐶
     {
         // 画像クリックで切り替える
         ude = GameObject.Find("Udetate");
@@ -33,7 +33,7 @@ public class chgSprite : MonoBehaviour {
         getTrn();
     }
 
-    public void changeSpriteUde() // 腕立てをタップした時
+    public void changeSpriteUde() // 腕立てをタップした時😼
     {
         // 画像クリックで切り替える
         sqw = GameObject.Find("squwat");

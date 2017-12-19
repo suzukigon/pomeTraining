@@ -13,7 +13,7 @@ public class Button_Test : MonoBehaviour {
 
     SpriteRenderer MainSpriteRenderer;
 
-    public static int kintreCnt = 0;
+    public static int kintreCnt = 10;
 
     public Sprite btn05Mae;
     public Sprite btn05Ato;
@@ -38,7 +38,7 @@ public class Button_Test : MonoBehaviour {
     private GameObject sqw;
     private GameObject udetate;
 
-    public void resetBtn() // ボタン選択の初期化
+    public void resetBtn() // ボタン選択の初期化😼
     {
         cnt05 = GameObject.Find("Button05");
         cnt05.gameObject.GetComponent<Image>().sprite = btn05Mae;
@@ -52,7 +52,7 @@ public class Button_Test : MonoBehaviour {
         cnt25.gameObject.GetComponent<Image>().sprite = btn25Mae;
     }
 
-    public static int getHitPoint() // 選択した回数をトレーニングシーンに渡す
+    public static int getHitPoint() // 選択した回数をトレーニングシーンに渡す🐥
     {
         return kintreCnt;
     }
@@ -63,14 +63,6 @@ public class Button_Test : MonoBehaviour {
         resetBtn();
         this.gameObject.GetComponent<Image>().sprite = btn05Ato;
         getHitPoint();
-
-        //データ取得
-        int total_count_sqw = PlayerPrefs.GetInt("TotalCountSqw");
-        total_count_sqw = total_count_sqw + 5;
-
-        //データ入力
-        PlayerPrefs.SetInt("TotalCountSqw", total_count_sqw);
-        
     }
 
     public void ButtonClick10()
@@ -108,11 +100,30 @@ public class Button_Test : MonoBehaviour {
     // スクワット開始
     public void startSquwat()
     {
-        int resultHitpoint = chgSprite.getTrn();
-        Debug.Log(resultHitpoint);
+        int trnKind = chgSprite.getTrn();
+        Debug.Log(trnKind);
 
+        if (trnKind == 0) //スクワットの場合🐶
+        {
+            // 合計データ取得
+            int total_count_sqw = PlayerPrefs.GetInt("TotalCountSqw");
+            total_count_sqw = total_count_sqw + kintreCnt;
+            // 合計データ入力
+            PlayerPrefs.SetInt("TotalCountSqw", total_count_sqw);
 
-        SceneManager.LoadScene("squwat");
+            SceneManager.LoadScene("squwat");
+        }
+        if (trnKind == 1) //腕立ての場合😼
+        {
+            // 合計データ取得
+            int total_count_udetate = PlayerPrefs.GetInt("TotalCountUdetate");
+            total_count_udetate = total_count_udetate + kintreCnt;
+            // 合計データ入力
+            PlayerPrefs.SetInt("TotalCountUdetate", total_count_udetate);
+
+            SceneManager.LoadScene("udetate_s");
+        }
+
     }
 
 }
